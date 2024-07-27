@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>:)</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+            background-image: url("DALL·E.webp");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            width: 100%;
+            height: 100vh;
+        }
+        body h1 {
+            text-align: center;
+            font-size: 45px;
+            color: rgb(182, 57, 46);
+            padding-top: 220px;
+            text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+            -webkit-text-stroke: 1px rgba(255, 0, 0, 0.73);
+            position: relative;
+            z-index: 9999;
+        }
+        .word {
+            font-family: cursive;
+            position: absolute;
+            font-size: 38px;
+            animation: fall reverse;
+            -webkit-text-stroke: 1px rgba(62, 177, 48, 0.5);
+        }
+
+        @keyframes fall {
+            0% {top: +10px }
+            100% {top: calc(100vh - 50px);}
+        }
+    </style>
+</head>
+<body>
+<h1>Knowledge doesn't fall from the sky.</h1>
+<script>
+    const words = ["HTML", "Мороженка", "Sort", "CSS", "Docker", "JavaScript", "React", "Angular", "Node.js",
+        "Figma", "English", "Сериальчик", "Array", "JSON", "Coffee", "Bug", "TypeScript", "Git", "API", "Framework"];
+
+    function createFallingWord(word) {
+        const span = document.createElement('span'); //new html element
+        span.classList.add('word'); //add class word
+        span.innerText = word; //word from my array
+        span.style.left = Math.random() * 100 + 'vw'; //horisont pos
+        span.style.animationDuration = Math.random() * 8 + 5 + 's'; //speed falling sec
+        span.style.top = '10px';
+        document.body.appendChild(span); //DOM (Document Object Model)
+    }
+
+    function startFallingWords() {
+        setInterval(() => {
+            const word = words[Math.floor(Math.random() * words.length)];
+            createFallingWord(word);
+        }, 700);
+    }
+
+    startFallingWords();
+</script>
+<script src="myjs.js"></script>
+</body>
+</html>
